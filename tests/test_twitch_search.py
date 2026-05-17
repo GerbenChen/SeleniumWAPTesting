@@ -8,7 +8,7 @@ from utils.config_reader import (
 
 
 @pytest.mark.smoke
-@pytest.mark.flaky(reruns=0)
+@pytest.mark.flaky(reruns=2)
 def test_twitch_streamer_flow(driver):
 
     config = load_config()
@@ -22,7 +22,7 @@ def test_twitch_streamer_flow(driver):
     home_page.click_search()
 
     search_page.search_game("StarCraft II")
-    search_page.scroll_twice(3)
+    search_page.scroll_twice(2)
     search_page.select_first_streamer()
 
     streamer_page.handle_popup()

@@ -9,7 +9,6 @@ logger = get_logger()
 
 class StreamerPage(BasePage):
 
-    # 重新整理後的定位器，將 Playwright 的虛擬選擇器轉換為 Selenium 支援的 CSS 或 XPath
     POPUPS = [
         (By.CSS_SELECTOR, "button[data-a-target='ms-proceed-button']"),
         (By.CSS_SELECTOR, "button[aria-label='Proceed']"),

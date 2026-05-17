@@ -25,7 +25,6 @@ class HomePage(BasePage):
 
         self.driver.get(url)
 
-        # Wait DOM complete
         WebDriverWait(
             self.driver,
             5
@@ -34,8 +33,6 @@ class HomePage(BasePage):
                 "return document.readyState"
             ) == "complete"
         )
-
-        # Twitch React rendering delay
         self.sleep(3)
 
     def remove_popup(self) -> None:
@@ -44,9 +41,7 @@ class HomePage(BasePage):
             "button[aria-label='Close']",
             "[data-a-target='consent-banner-accept']"
         ]
-
         for selector in popup_selectors:
-
             try:
                 popup = WebDriverWait(
                     self.driver,
@@ -59,9 +54,7 @@ class HomePage(BasePage):
                         )
                     )
                 )
-
                 if popup.is_displayed():
-
                     self.driver.execute_script(
                         "arguments[0].click();",
                         popup
@@ -90,9 +83,7 @@ class HomePage(BasePage):
             ]
 
             for by, locator in xpath_selectors:
-
                 try:
-
                     element = WebDriverWait(
                         self.driver,
                         1
@@ -101,7 +92,6 @@ class HomePage(BasePage):
                             (by, locator)
                         )
                     )
-
                     if element.is_displayed():
                         self.driver.execute_script(
                             """
@@ -111,15 +101,11 @@ class HomePage(BasePage):
                             """,
                             element
                         )
-
                         self.sleep(1)
-
-                        # JS click more stable on Twitch
                         self.driver.execute_script(
                             "arguments[0].click();",
                             element
                         )
-
                         return
 
                 except (

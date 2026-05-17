@@ -1,5 +1,5 @@
 base_url: "https://m.twitch.tv"
-
+search_name: "StarCraft II"
 browser:
   headless: false
   mobile_emulator: "iPhone 12 Pro"
